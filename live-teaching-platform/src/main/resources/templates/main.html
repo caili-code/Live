@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>首页</title>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="css/video.css" rel="stylesheet" th:href="@{/css/video.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div th:replace="header::header"></div>
+<!--导航栏-->
+
+<!--轮播图-->
+<div class="container banner">
+    <div class="carousel slide" data-interval="2500" data-ride="carousel" id="carousel-banner">
+        <ol class="carousel-indicators">
+            <li class="" data-slide-to="0" data-target="#carousel-banner"
+                th:data-slide-to="${iterStatus.index}"
+                th:each="carousel, iterStatus:${carouselList}"></li>
+        </ol>
+        <div class="carousel-inner">
+            <a class="carousel-item" href="#"
+               th:class="${iterStatus.index}==0?'carousel-item active':'carousel-item'"
+               th:each="carousel, iterStatus:${carouselList}"
+               th:href="@{/video/}+${carousel.videoId}">
+                <img alt="" class="d-block w-100" src="img/bg1.jpg" th:src="@{/img/}+${carousel.imageName}">
+            </a>
+        </div>
+        <a class="carousel-control-prev" data-slide="prev" href="#carousel-banner">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" data-slide="next" href="#carousel-banner">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+<script charset="UTF-8" src="js/jquery-3.4.0.min.js" th:href="@{/js/jquery-3.4.0.min.js}"></script>
+<script charset="UTF-8" src="js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+<!--轮播图-->
+
+
+<!--名师推荐-->
+<div class="container teachers">
+    <div class="tetimonials">
+        <div class="inner">
+            <h4 class="subtitle">教师介绍</h4>
+            <div class="border"></div>
+            <div class="rowT">
+                <div class="colT">
+                    <div class="testimonial">
+                        <img alt="" src="/img/t1.jpg">
+                        <div class="name">陈建兵</div>
+                        <p>软件开发工程师--十余年的开发经历，精通java、Python、PHP等编程语言，喜欢篮球与摄影，目前在学校作为一名教师进行Python教学。</p>
+                    </div>
+                </div>
+                <div class="colT">
+                    <div class="testimonial">
+                        <img alt="" src="/img/t2.jpg">
+                        <div class="name">吴飞伟</div>
+                        <p>目前主要负责后端架构设计工作，具有丰厚的一线开发经验与架构经验，喜欢钻研各种源码，曾任某知名高校负责后端架构，教学中注重互动，乐于分享。</p>
+                    </div>
+                </div>
+                <div class="colT">
+                    <div class="testimonial">
+                        <img alt="" src="/img/t3.jpg">
+                        <div class="name">路明非</div>
+                        <p>知名高校计算机大学教学，专注与网页制作、平面设计、多媒体技术等多个领域，工作认真，风趣幽默的授课方式深受学生们的喜爱。</p>
+                    </div>
+                </div>
+                <div class="colT">
+                    <div class="testimonial">
+                        <img alt="" src="/img/t4.jpg">
+                        <div class="name">陈子龙</div>
+                        <p>资深软件测试工程师--带领学生团队建立多个大型项目的安全测试工作，精通Jmeter等各种工具的使用，其出品的软件测试系列教学视频收到学生的一致好评。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="more" href="#" th:href="@{/teachers}">查看更多</a>
+    </div>
+</div>
+</body>
+</html>
