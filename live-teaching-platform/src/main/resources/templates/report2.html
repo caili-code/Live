@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>report</title>
+</head>
+<body>
+	<!-- 报名模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true" th:fragment="report">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">报名</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">关闭</button>
+				</div>
+				<div class="modal-body">
+
+						<li class="li1">
+							<label>姓名</label>
+							<input type="text" id="Field1" class="intxt" placeholder="请输入姓名">
+						</li>
+						<li class="li2">
+							<label>电话</label>
+							<input type="text" id="Field2" class="intxt" placeholder="请输入手机号">
+						</li>
+						<li class="li3">
+							<input type="submit" class="inbtn f_l" value="提交">
+							<a href="/contact/33.html" target="_self" class="inbtn f_r">免费来校参观</a>
+						</li>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</body>
+</html>

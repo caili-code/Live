@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>创建直播</title>
@@ -9,14 +10,22 @@
     <link href="css/zhibo.css" rel="stylesheet" th:href="@{/css/zhibo.css}">
     <link href="css/user-left.css" rel="stylesheet" th:href="@{/css/user-left.css}">
     <link href="css/user-right.css" rel="stylesheet" th:href="@{/css/user-right.css}">
+    <link href="css/header1.css" rel="stylesheet" th:href="@{/css/header1.css}">
+	<link href="css/foot.css" rel="stylesheet" th:href="@{/css/foot.css}">
+	<script charset="UTF-8" src="js/jquery-3.4.0.min.js" th:href="@{/js/jquery-3.4.0.min.js}"></script>
+	<script charset="UTF-8" src="js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+	
 </head>
 <body>
 
-<!--导航栏-->
+<!--顶栏 -->
+<div th:replace="header1::header1"></div>
+<!--顶栏  -->
+<!--导航栏 -->
 <div th:replace="header::header"></div>
-<!--导航栏-->
+<!--导航栏 -->
 <!--报名弹窗-->
-<div th:replace="report::report"></div>
+<div th:replace="report::report"></div> 
 <!--报名弹窗-->
 <div class="container userPage">
     <div class="row">
@@ -85,5 +94,8 @@
         </div>
     </div>
 </div>
+	<!-- 页脚 -->
+	<div th:replace="foot::foot"></div>
+	<!-- 页脚 -->
 </body>
 </html>

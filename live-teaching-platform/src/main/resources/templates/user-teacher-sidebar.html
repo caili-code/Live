@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>sidebar</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
     <link href="css/video.css" rel="stylesheet" th:href="@{/css/video.css}">
     <link href="css/zhibo.css" rel="stylesheet" th:href="@{/css/zhibo.css}">
@@ -19,7 +18,7 @@
         <a class="list-group-item-action" data-toggle="list" href="#"
            th:class="${active}=='live-list'?'list-group-item-action active show':'list-group-item-action'"
            th:href="@{/user}">
-            直播列表
+           直播列表
         </a>
         <a class="list-group-item-action" data-toggle="list" href="#"
            th:class="${active}=='create-live'?'list-group-item-action active show':'list-group-item-action'"

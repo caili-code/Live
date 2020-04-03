@@ -31,6 +31,9 @@ public class LiveMaterialService {
 
     public void uploadFile(MultipartFile uploadFile, String filename) {
         File file = new File(liveConfig.getMaterialFilePath() + "/" + filename);
+        if (!file.getParentFile().exists()){
+        	file.getParentFile().mkdirs();
+        	};
         try {
             uploadFile.transferTo(file);
         } catch (IOException e) {

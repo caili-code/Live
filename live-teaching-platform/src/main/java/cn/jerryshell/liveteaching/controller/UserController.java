@@ -76,20 +76,13 @@ public class UserController {
 //        	url = toStudentUserPage(studentId, model);
         	url="user-student";
         }
-
+        System.out.println("url============"+url);
         return url;
     }
     @PostMapping("/report")
     @ResponseBody
     public Object report(Report report) {
-//    	System.out.println(report);
-//    	Report report=new Report();
-//    	System.out.println("-------------"+params);
-    	System.out.println(report);
-//    	report.setName();
-//    	report.setPhone();
     	report=reportService.save(report);
-    	System.out.println(report);
         Map<String,Object> map = new HashMap<>();
     	map.put("success",true);	
         map.put("message","报名成功了！");
@@ -118,13 +111,9 @@ public class UserController {
     }
 
     private String toTeacherUserPage(String teacherId, Model model) {
-    	if(teacherId!=null) {
-    		
-    	}else {
-            List<Live> liveList = liveService.findByTeacherId(teacherId);
-            List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
-            model.addAttribute("liveVMList", liveVMList);
-            }
+        List<Live> liveList = liveService.findByTeacherId(teacherId);
+        List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
+        model.addAttribute("liveVMList", liveVMList);
         model.addAttribute("active", "live-list");
         return "user-teacher";
     }
