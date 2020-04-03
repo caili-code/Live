@@ -22,8 +22,13 @@ public class ChatController {
             Model model
     ) {
         model.addAttribute("topicName", topicName);
-        String loginUserNickname = session.getAttribute("loginUserNickname").toString();
-        model.addAttribute("username", loginUserNickname);
+        if(session.getAttribute("loginUserNickname")==null) {
+        	model.addAttribute("username", "游客");
+        }else {
+        	String loginUserNickname = session.getAttribute("loginUserNickname").toString();
+            model.addAttribute("username", loginUserNickname);      	
+        }
+        
         return "chat";
     }
 
