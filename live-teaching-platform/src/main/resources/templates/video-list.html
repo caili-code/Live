@@ -6,14 +6,22 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
     <link href="css/video.css" rel="stylesheet" th:href="@{/css/video.css}">
+	<script charset="UTF-8" src="js/jquery-3.4.0.min.js" th:href="@{/js/jquery-3.4.0.min.js}"></script>
+	<script charset="UTF-8" src="js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+	<link href="css/header1.css" rel="stylesheet" th:href="@{/css/header1.css}">
+	<link href="css/foot.css" rel="stylesheet" th:href="@{/css/foot.css}">
 </head>
 <body>
-
+<!--顶栏 -->
+<div th:replace="header1::header1"></div>
+<!--顶栏  -->
 <!--导航栏-->
 <div th:replace="header::header"></div>
 <!--导航栏-->
-
-<div class="container">
+<!--报名弹窗-->
+	<div th:replace="report::report"></div>
+<!--报名弹窗-->
+<div class="container" >
     <!-- 选项卡菜单-->
     <div id="nav-subtile">
         <ul class="nav category " id="myTab" role="tablist">
@@ -54,5 +62,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

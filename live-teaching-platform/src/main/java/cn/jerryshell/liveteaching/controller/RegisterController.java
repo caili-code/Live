@@ -52,6 +52,7 @@ public class RegisterController {
 
     @PostMapping("/register/teacher")
     public String registerTeacher(Teacher teacher, Model model) {
+    	System.out.println(teacher);
         Teacher teacherFromDB = teacherService.findById(teacher.getId());
         if (teacherFromDB != null) {
             model.addAttribute("message", "该工号已经被注册");

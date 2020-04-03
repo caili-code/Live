@@ -7,13 +7,19 @@ import cn.jerryshell.liveteaching.vm.HomeworkViewModel;
 import cn.jerryshell.liveteaching.vm.LiveViewModel;
 import cn.jerryshell.liveteaching.vm.VideoViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -37,32 +43,74 @@ public class UserController {
     private VideoMaterialService videoMaterialService;
     @Autowired
     private HomeworkService homeworkService;
+    @Autowired
+    private ReportService reportService;
 
+//    @GetMapping("/user")
+//    public String toUserPage(HttpSession session, Model model) {
+//        String loginUserKind = session.getAttribute("loginUserKind").toString();
+//        String url = "redirect:/";
+//        switch (loginUserKind) {
+//            case "student":
+//                String studentId = session.getAttribute("loginUserId").toString();
+//                url = toStudentUserPage(studentId, model);
+//                break;
+//            case "teacher":
+//                String teacherId = session.getAttribute("loginUserId").toString();
+//                url = toTeacherUserPage(teacherId, model);
+//                break;
+//        }
+//        return url;
+//    }
+    
     @GetMapping("/user")
     public String toUserPage(HttpSession session, Model model) {
-        String loginUserKind = session.getAttribute("loginUserKind").toString();
+        Object loginUserKind = session.getAttribute("loginUserKind");
         String url = "redirect:/";
-        switch (loginUserKind) {
-            case "student":
-                String studentId = session.getAttribute("loginUserId").toString();
-                url = toStudentUserPage(studentId, model);
-                break;
-            case "teacher":
+        if(loginUserKind!=null) {
+
                 String teacherId = session.getAttribute("loginUserId").toString();
-                url = toTeacherUserPage(teacherId, model);
-                break;
+                url = toTeacherUserPage(teacherId, model);        	
+        }else {
+//        	String studentId = session.getAttribute("loginUserId").toString();
+//        	url = toStudentUserPage(studentId, model);
+        	url="user-student";
         }
+
         return url;
     }
+    @PostMapping("/report")
+    @ResponseBody
+    public Object report(Report report) {
+//    	System.out.println(report);
+//    	Report report=new Report();
+//    	System.out.println("-------------"+params);
+    	System.out.println(report);
+//    	report.setName();
+//    	report.setPhone();
+    	report=reportService.save(report);
+    	System.out.println(report);
+        Map<String,Object> map = new HashMap<>();
+    	map.put("success",true);	
+        map.put("message","报名成功了！");
+        return map;
+    }
 
-    private String toStudentUserPage(String studentId, Model model) {
-        Student student = studentService.findById(studentId);
-        if (student == null) {
-            return "redirect:/";
-        }
-        // 过滤时间和专业和年级
-        Date yesterday = new Date(System.currentTimeMillis() - 86400000);
-        List<Live> liveList = liveService.findByDateAfterAndMajorIdAndGrade(yesterday, student.getMajorId(), student.getGrade());
+//    private String toStudentUserPage(String studentId, Model model) {
+//        Student student = studentService.findById(studentId);
+//        if (student == null) {
+//            return "redirect:/";
+//        }
+//        // 过滤时间和专业和年级
+//        Date yesterday = new Date(System.currentTimeMillis() - 86400000);
+//        List<Live> liveList = liveService.findByDateAfterAndMajorIdAndGrade(yesterday, student.getMajorId(), student.getGrade());
+//        List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
+//        model.addAttribute("liveVMList", liveVMList);
+//        model.addAttribute("active", "live-list");
+//        return "user-student";
+//    }
+    private String toStudentUserPage( Model model) {
+        List<Live> liveList=liveService.findAll();
         List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
         model.addAttribute("liveVMList", liveVMList);
         model.addAttribute("active", "live-list");
@@ -70,12 +118,20 @@ public class UserController {
     }
 
     private String toTeacherUserPage(String teacherId, Model model) {
-        List<Live> liveList = liveService.findByTeacherId(teacherId);
-        List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
-        model.addAttribute("liveVMList", liveVMList);
+    	if(teacherId!=null) {
+    		
+    	}else {
+            List<Live> liveList = liveService.findByTeacherId(teacherId);
+            List<LiveViewModel> liveVMList = LiveViewModel.loadFromLiveList(liveConfig.getIp(), liveList, teacherService, courseService, majorDao, liveMaterialService);
+            model.addAttribute("liveVMList", liveVMList);
+            }
         model.addAttribute("active", "live-list");
         return "user-teacher";
     }
+//    private String toTeacherUserPage(Model model) {
+//        model.addAttribute("active", "live-list");
+//        return "user-teacher";
+//    }
 
     @GetMapping("/user/create-live")
     public String toCreateLivePage(Model model) {

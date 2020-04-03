@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>report</title>
+</head>
+<body>
+	<!-- 报名模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true" th:fragment="report">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">报名</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">关闭</button>
+				</div>
+				<div class="modal-body">
+                        <div class="form-group">
+                            <input class="form-control" id="name"  placeholder="学号/工号" required type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="phone"  placeholder="密码" required type="text"/>
+                        </div>
+<!--                         <div class="well well-sm" style="text-align:center;margin-bottom: 10px;"> -->
+<!--                             <input checked name="kind" required type="radio" value="student"> 学生 -->
+<!--                             <input name="kind" required type="radio" value="teacher"> 老师 -->
+<!--                         </div> -->
+                        <button id="submitButton" class="btn btn-primary btn-block" type="submit">登录</button>
+
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</body>
+</html>

@@ -30,10 +30,10 @@ public class LoginController {
     public String login(
             @RequestParam("id") String id,
             @RequestParam("password") String password,
-            @RequestParam("kind") String kind,
             HttpSession session,
             Model model
     ) {
+    	String kind="teacher";
         boolean loginResult;
         switch (kind) {
             case "student":

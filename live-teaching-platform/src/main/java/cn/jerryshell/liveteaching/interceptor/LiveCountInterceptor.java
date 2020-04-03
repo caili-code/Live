@@ -25,6 +25,7 @@ public class LiveCountInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    	System.out.println("LiveInterceptor");
         HttpSession session = request.getSession();
         Object loginUserIdObj = session.getAttribute("loginUserId");
         if (loginUserIdObj == null) {
@@ -49,6 +50,7 @@ public class LiveCountInterceptor implements HandlerInterceptor {
                 }
                 todayLiveCount = liveDao.countByTeacherId(teacher.getId());
         }
+        System.out.println("todayLiveCount----------------------"+todayLiveCount);
         session.setAttribute("todayLiveCount", todayLiveCount);
         return true;
     }

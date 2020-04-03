@@ -31,6 +31,17 @@ public class VideoMaterialService {
 
     public void upload(MultipartFile multipartFile, String filename) {
         File file = new File(videoConfig.getMaterialFilePath() + "/" + filename);
+        if (!file.getParentFile().exists()){
+        	file.getParentFile().mkdirs();
+        	};
+        if(!file.exists()) {
+        	try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
         try {
             multipartFile.transferTo(file);
         } catch (IOException e) {

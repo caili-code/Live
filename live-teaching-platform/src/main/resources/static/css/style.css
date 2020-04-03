@@ -1,5 +1,5 @@
 body {
-	    background-image:url(../img/hsgm1.png);
+	    background-color: rgb(241, 241, 241);
 	    background-attachment: fixed;
 
 	}
@@ -65,8 +65,8 @@ div {
 }
 
 .navs {
-    margin-top: 10px;
-    margin-bottom: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 18px;
 }
 

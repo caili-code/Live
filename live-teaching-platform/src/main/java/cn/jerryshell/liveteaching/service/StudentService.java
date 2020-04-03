@@ -28,4 +28,5 @@ public class StudentService {
         student.setPassword(password);
         studentDao.save(student);
     }
+    
 }

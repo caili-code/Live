@@ -1,0 +1,24 @@
+/*common*/
+*{padding:0px;margin:0px;}
+img{border:none;}
+a{color: #535353;text-decoration: none;}
+a:hover{color:#ba0000;}
+ul,li{list-style:none;}
+input,select,button{font:12px Verdana,Arial,Tahoma;vertical-align:middle;}
+h1,h2,h3,h4,h5,h6 {font-size: 12px;font-weight: normal;}
+i,em{font-style:normal;}
+
+
+.foota{background:#af0a0a;padding:65px 0 0;width:100%;height:241px;color:#fff;font-size:15px;}
+.foota .left{width:325px;float:left;text-align: center;font-size:0;}
+.foota .left p{font-size:17px;color:#f9f296;font-weight:bold;text-align: center;padding-top:18px;}
+.foota .center{float:left;width:240px;margin:0 155px;text-align: center;}
+.foota .center li{float:left;width:120px;}
+.foota .center li a{display:block;color:#fff;font-size:12px;padding-bottom:12px;}
+.foota .right{width:324px;float:right;} 
+.foota .right li{width:162px;float:left;font-size:12px;padding-bottom:12px;}
+
+.footb{text-align:center;background:#af0a0a;}
+.footb img{width:83px;height:61px;padding:0  11px;}
+
+.footc{padding:27px 0;background:#af0a0a;color:#fff;text-align: center;font-size:12px;line-height:22px;}

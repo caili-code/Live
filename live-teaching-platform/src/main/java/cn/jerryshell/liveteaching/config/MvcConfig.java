@@ -25,12 +25,13 @@ public class MvcConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new LoginInterceptor())
-                        .addPathPatterns("/**")
-                        .excludePathPatterns("/login", "/register/**", "/css/**", "/js/**", "/img/**");
+            	System.out.println("webMvcConfigurer");
+//                registry.addInterceptor(new LoginInterceptor())
+//                        .addPathPatterns("/**")
+//                        .excludePathPatterns("/login", "/register/**", "/css/**", "/js/**", "/img/**");
                 registry.addInterceptor(new LiveCountInterceptor(liveDao, studentDao, teacherDao))
                         .addPathPatterns("/**")
-                        .excludePathPatterns("/login", "/register/**", "/css/**", "/js/**", "/img/**");
+                        .excludePathPatterns("/login","main", "/register/**", "/css/**", "/js/**", "/img/**");
             }
         };
     }

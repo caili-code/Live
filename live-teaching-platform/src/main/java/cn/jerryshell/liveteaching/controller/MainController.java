@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
 
@@ -16,10 +18,18 @@ public class MainController {
     private CarouselDao carouselDao;
 
     @GetMapping("/")
-    public String main(Model model) {
+    public String main(Model model,HttpSession session) {
+//    	if(session.getAttribute("loginUserKind")!=null) {    		
+//    		
+//    	}
+    	System.out.println("main---------------------");
         List<Carousel> carouselList = carouselDao.findAll();
         model.addAttribute("carouselList", carouselList);
         return "main";
+    }
+    @GetMapping("/index")
+    public String index() {
+        return "index";
     }
 
     @GetMapping("/teachers")

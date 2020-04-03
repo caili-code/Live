@@ -20,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.util.List;
@@ -86,6 +85,7 @@ public class VideoController {
         video.setTeacherId(session.getAttribute("loginUserId").toString());
         video.setFileType(videoFileType);
         videoService.uploadVideo(videoFile, video.getId() + "." + video.getFileType());
+        System.out.println(video.getId() + "." + video.getFileType());
         videoService.save(video);
 
         // 视频资料
@@ -99,6 +99,7 @@ public class VideoController {
         videoMaterial.setFileType(Util.getFileTypeByFilename(materialFilename));
         videoMaterialService.upload(videoMaterialFile, videoMaterial.getId() + "." + videoMaterial.getFileType());
         videoMaterialService.save(videoMaterial);
+        
         return "redirect:/user/video-list";
     }
 

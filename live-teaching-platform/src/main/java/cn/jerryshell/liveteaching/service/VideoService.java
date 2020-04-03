@@ -6,7 +6,6 @@ import cn.jerryshell.liveteaching.model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +19,19 @@ public class VideoService {
 
     public void uploadVideo(MultipartFile uploadFile, String filename) {
         File file = new File(videoConfig.getFilepath() + "/" + filename);
+        System.out.println(videoConfig.getFilepath() + "/" + filename);
+        if (!file.getParentFile().exists()){
+        	file.getParentFile().mkdirs();
+        	};
+        if(!file.exists()) {
+        	try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        System.out.println(videoConfig.getFilepath() + "/" + filename);
         try {
             uploadFile.transferTo(file);
         } catch (IOException e) {
