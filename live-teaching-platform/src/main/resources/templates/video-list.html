@@ -9,7 +9,6 @@
 	<link href="css/header1.css" rel="stylesheet" th:href="@{/css/header1.css}">
 	<link href="css/foot.css" rel="stylesheet" th:href="@{/css/foot.css}">
 	<script charset="UTF-8" src="js/jquery-3.4.0.min.js" th:href="@{/js/jquery-3.4.0.min.js}"></script>
-	<script charset="UTF-8" src="js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
 	
 </head>
 <body>
@@ -25,8 +24,8 @@
 <div class="container">
     <!-- 选项卡菜单-->
     <div id="nav-subtile">
-        <ul class="nav category"  data-toggle="buttons" id="myTab" role="tablist">
-            <li>
+        <ul class="nav category"  id="myTab" role="tablist">
+            <li >
                 <a class="categoryItem" data-toggle="tab" href="#" role="tab" th:href="@{/video/}">全部</a>
             </li>
             <li>
@@ -67,6 +66,8 @@
 <!-- 页脚 -->
 <div th:replace="foot::foot"></div>
 <!-- 页脚 -->
+<script charset="UTF-8" src="js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+
 
 </body>
 </html>

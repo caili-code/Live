@@ -40,6 +40,7 @@ public class VideoController {
 
     @GetMapping("/video")
     public String toVideoListPage(Model model) {
+    	System.out.println("video--------------------------");
         return toVideoListPage(model, videoService.findAll());
     }
 
