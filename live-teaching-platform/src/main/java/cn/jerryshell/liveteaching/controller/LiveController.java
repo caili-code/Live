@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+
+import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Objects;
@@ -113,6 +115,10 @@ public class LiveController {
             return ResponseEntity.notFound().build();
         }
         String filename = liveMaterial.getId() + "." + liveMaterial.getFileType();
+        File file=new File(liveConfig.getMaterialFilePath());
+        if(!file.getParentFile().exists()) {
+        	file.mkdir();       	
+        }
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
                 .body(new UrlResource("file://" + liveConfig.getMaterialFilePath() + "/" + filename));
